@@ -20,9 +20,19 @@ public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
 
     @Override
     public String createCategory(ExpenseCategoryRequestDto expenseCategoryRequestDto) {
-        return null;
+        String response="Se registro la categoria con exito";
+        ExpenseCategory category= mapDtoToExpenseCategory(expenseCategoryRequestDto);
+        Integer responseInserted= expenseCategoryRepository.insert(category);
+        if(responseInserted.equals(0)){
+            return "No se inserto ningun registro";
+        }
+        return response;
     }
-
+    private ExpenseCategory mapDtoToExpenseCategory(ExpenseCategoryRequestDto expenseCategoryRequestDto){
+        ExpenseCategory expenseCategory=new ExpenseCategory();
+        expenseCategory.setName(expenseCategoryRequestDto.getName());
+        return expenseCategory;
+    }
     @Override
     public List<ExpenseCategoryResponseDto> getAllCategories() {
         List<ExpenseCategory> categories= expenseCategoryRepository.getAllCategories();
