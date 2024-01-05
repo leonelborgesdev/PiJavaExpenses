@@ -11,5 +11,5 @@ public interface ExpenseRepository {
     Integer insert(Expense expense);
     List<Expense> getAll();
     Integer updateExpense(Long id, Expense expense);
-    void delete(Integer id);
+    void deleteExpense(Long id);
 }

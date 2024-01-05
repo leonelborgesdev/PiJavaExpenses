@@ -80,7 +80,7 @@ public class ExpenseRepositoryImpl implements ExpenseRepository {
 
 
     @Override
-    public void delete(Integer id) {
+    public void deleteExpense(Long id) {
 
     }
 }

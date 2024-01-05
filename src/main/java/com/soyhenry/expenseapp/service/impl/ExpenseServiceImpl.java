@@ -59,6 +59,11 @@ public class ExpenseServiceImpl implements ExpenseService {
         return response;
     }
 
+    @Override
+    public void deleteExpense(Long id) {
+        expenseRepository.deleteExpense(id);
+    }
+
     private ExpenseResponseDto mapExpenseToResponseDto(Expense expense){
         ExpenseResponseDto expenseResponseDto= new ExpenseResponseDto();
         expenseResponseDto.setAmount(expense.getAmount());

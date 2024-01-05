@@ -41,4 +41,10 @@ public class ExpenseController {
         return  ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteExpense(@PathVariable Long id){
+        //expenseService.deleteExpense(id);
+        return ResponseEntity.status(HttpStatus.GONE).body("Se elimino el gasto con id:"+id);
+    }
+
 }
