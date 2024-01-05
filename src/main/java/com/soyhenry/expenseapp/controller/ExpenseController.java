@@ -72,5 +72,10 @@ public class ExpenseController {
         List<ExpenseCategoryResponseDto> response= expenseCategoryService.getAllCategories();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
+    @PutMapping("/category/{id}")
+    public ResponseEntity<String> updateExpenseCategory(@PathVariable Long id,
+                                                        @RequestBody ExpenseCategoryRequestDto expenseCategoryRequestDto){
+        String response = expenseCategoryService.updateCategory(id, expenseCategoryRequestDto);
+        return  ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+    }
 }
