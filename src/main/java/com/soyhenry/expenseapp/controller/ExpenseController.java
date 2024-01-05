@@ -42,8 +42,8 @@ public class ExpenseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteExpense(@PathVariable Long id){
-        //expenseService.deleteExpense(id);
+    public ResponseEntity<String> deleteExpense(@PathVariable Long id) throws DAOException {
+        expenseService.deleteExpense(id);
         return ResponseEntity.status(HttpStatus.GONE).body("Se elimino el gasto con id:"+id);
     }
 

@@ -46,7 +46,7 @@ public class ExpenseCategoryDaoImpl implements ExpenseCategoryDao {
             }
             return null;
         } catch (SQLException e) {
-            throw new DAOException("Error al obtener el gasto por Id", e);
+            throw new DAOException("Error al obtener el gasto por Id");
         }
     }
     private ExpenseCategory mapDtoToExpenseCategory(ExpenseCategoryDto expenseCategoryDto){

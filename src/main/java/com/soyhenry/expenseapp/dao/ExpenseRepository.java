@@ -11,5 +11,5 @@ public interface ExpenseRepository {
     Integer insert(Expense expense);
     List<Expense> getAll();
     Integer updateExpense(Long id, Expense expense);
-    void deleteExpense(Long id);
+    void deleteExpense(Long id) throws DAOException;
 }

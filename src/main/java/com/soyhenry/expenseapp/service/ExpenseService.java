@@ -11,5 +11,5 @@ public interface ExpenseService {
     List<ExpenseResponseDto> getAllExpenses();
     String updateExpense(Long id, ExpenseRequestDto expenseResponseDto);
 
-    void deleteExpense(Long id);
+    void deleteExpense(Long id) throws DAOException;
 }

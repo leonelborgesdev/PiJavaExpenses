@@ -60,7 +60,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public void deleteExpense(Long id) {
+    public void deleteExpense(Long id)  throws DAOException{
         expenseRepository.deleteExpense(id);
     }
 
