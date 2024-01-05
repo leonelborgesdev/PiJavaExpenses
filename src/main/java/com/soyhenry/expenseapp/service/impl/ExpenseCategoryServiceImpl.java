@@ -45,7 +45,7 @@ public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
     public String updateCategory(Long id, ExpenseCategoryRequestDto categoryRequestDto) {
         String response= "Se actualizo la categoria con exito";
         ExpenseCategory category=mapDtoToExpenseCategory(categoryRequestDto);
-        Integer responseUpdate= expenseCategoryRepository.updateCategory(id,category);
+        Integer responseUpdate= expenseCategoryRepository.updateCategory(id, category);
         if (responseUpdate.equals(0)){
             return "No se actualizo ningun registro con el id="+ id;
         }

@@ -18,6 +18,7 @@ public class ExpenseCategoryRepositoryImpl implements ExpenseCategoryRepository 
     private static final String GET_ALL_CATEGORIES="SELECT * FROM expensecategory";
     private static final String GET_CATEGORY_BY_NAME="SELECT * FROM expensecategory WHERE name = ?";
     private static final String INSERT_INTO_EXPENSE_CATEGORY="INSERT INTO expensecategory (name) VALUES (?)";
+    private static final String UPDATE_CATEGORY_BY_ID="UPDATE expensecategory SET name = ? WHERE id = ?";
     private final JdbcTemplate jdbcTemplate;
 
     public ExpenseCategoryRepositoryImpl(JdbcTemplate jdbcTemplate) {
@@ -41,14 +42,10 @@ public class ExpenseCategoryRepositoryImpl implements ExpenseCategoryRepository 
 
     @Override
     public Integer updateCategory(Long id, ExpenseCategory expenseCategory) {
-        return null;
+        return jdbcTemplate.update(UPDATE_CATEGORY_BY_ID,
+                expenseCategory.getName(),id);
     }
 
-    private ExpenseCategory mapDtoToExpenseCategory(ExpenseCategoryDto expenseCategoryDto){
-        ExpenseCategory expenseCategory= new ExpenseCategory();
-        expenseCategory.setName(expenseCategoryDto.getName());
-        return expenseCategory;
-    }
     static class CategoryRowMapper implements RowMapper<ExpenseCategory>{
 
         @Override
