@@ -2,6 +2,7 @@ package com.soyhenry.expenseapp.controller;
 
 import com.soyhenry.expenseapp.dto.request.ExpenseCategoryRequestDto;
 import com.soyhenry.expenseapp.dto.request.ExpenseRequestDto;
+import com.soyhenry.expenseapp.dto.response.ExpenseCategoryResponseDto;
 import com.soyhenry.expenseapp.dto.response.ExpenseResponseDto;
 import com.soyhenry.expenseapp.exception.DAOException;
 import com.soyhenry.expenseapp.service.ExpenseCategoryService;
@@ -65,4 +66,11 @@ public class ExpenseController {
                 .status(HttpStatus.CREATED)
                 .body(response);
     }
+
+    @GetMapping("/category")
+    public ResponseEntity<List<ExpenseCategoryResponseDto>> getExpensesCategory(){
+        List<ExpenseCategoryResponseDto> response= expenseCategoryService.getAllCategories();
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.soyhenry.expenseapp.service.impl;
 
-import com.soyhenry.expenseapp.controller.ExpenseController;
 import com.soyhenry.expenseapp.dao.ExpenseRepository;
 import com.soyhenry.expenseapp.dto.request.ExpenseRequestDto;
 import com.soyhenry.expenseapp.dto.response.ExpenseCategoryResponseDto;
