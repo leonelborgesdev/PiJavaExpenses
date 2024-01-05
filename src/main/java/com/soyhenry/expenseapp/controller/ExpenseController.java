@@ -1,5 +1,6 @@
 package com.soyhenry.expenseapp.controller;
 
+import com.soyhenry.expenseapp.dto.request.ExpenseCategoryRequestDto;
 import com.soyhenry.expenseapp.dto.request.ExpenseRequestDto;
 import com.soyhenry.expenseapp.dto.response.ExpenseResponseDto;
 import com.soyhenry.expenseapp.exception.DAOException;
@@ -19,6 +20,11 @@ public class ExpenseController {
         this.expenseService = expenseService;
     }
 
+    @PostMapping("/category")
+    public ResponseEntity<String> createCategoryHndler(@RequestBody ExpenseCategoryRequestDto expenseCategoryRequestDto){
+        //String response=
+        return null;
+    }
 
     @PostMapping
     public ResponseEntity<String> createExpenseHandler(@RequestBody ExpenseRequestDto expenseRequestDto) throws DAOException {
