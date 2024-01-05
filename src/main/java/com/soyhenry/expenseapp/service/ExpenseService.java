@@ -10,6 +10,6 @@ public interface ExpenseService {
     String createExpense(ExpenseRequestDto expenseRequestDto) throws DAOException;
     List<ExpenseResponseDto> getAllExpenses();
     String updateExpense(Long id, ExpenseRequestDto expenseResponseDto);
-
     void deleteExpense(Long id) throws DAOException;
+    ExpenseResponseDto getExpenseById(Long id);
 }

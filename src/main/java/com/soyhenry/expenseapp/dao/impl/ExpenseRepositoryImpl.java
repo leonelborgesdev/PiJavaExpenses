@@ -16,7 +16,7 @@ import java.util.List;
 
 @Repository
 public class ExpenseRepositoryImpl implements ExpenseRepository {
-    private static final String GET_EXPENSE_BY_ID= "SELECT * FROM Expense WHERE id= ?";
+    private static final String SELECT_EXPENSE_BY_ID= "SELECT * FROM Expense WHERE id= ?";
     private static final String GET_ALL_EXPENSES="SELECT * FROM Expense";
     private static final String INSERT_INTO_EXPENSE="INSERT INTO Expense(amount, category_id, category_name, date) VALUES (?,?,?,?)";
     private static final String UPDATE_EXPENSE_BY_ID = "UPDATE Expense SET amount = ?, category_id=?, date= ? WHERE id= ?";
@@ -90,5 +90,15 @@ public class ExpenseRepositoryImpl implements ExpenseRepository {
             throw new DAOException("Hubo un error al eliminar el gasto con id" + id, exception);
         }
         System.out.println("Gasto eliminado con exito");
+    }
+
+    @Override
+    public Expense selectExpenseById(Long id) {
+        Object[] params= {id};
+        int [] types= {1};
+        return  jdbcTemplate.queryForObject(
+                SELECT_EXPENSE_BY_ID,
+                params, types,
+                new ExpenseRowMapper());
     }
 }

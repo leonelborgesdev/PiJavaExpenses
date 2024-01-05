@@ -1,5 +1,6 @@
 package com.soyhenry.expenseapp.service.impl;
 
+import com.soyhenry.expenseapp.controller.ExpenseController;
 import com.soyhenry.expenseapp.dao.ExpenseRepository;
 import com.soyhenry.expenseapp.dto.request.ExpenseRequestDto;
 import com.soyhenry.expenseapp.dto.response.ExpenseCategoryResponseDto;
@@ -62,6 +63,13 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public void deleteExpense(Long id)  throws DAOException{
         expenseRepository.deleteExpense(id);
+    }
+
+    @Override
+    public ExpenseResponseDto getExpenseById(Long id) {
+        Expense expense = expenseRepository.selectExpenseById(id);
+
+        return mapExpenseToResponseDto(expense);
     }
 
     private ExpenseResponseDto mapExpenseToResponseDto(Expense expense){
