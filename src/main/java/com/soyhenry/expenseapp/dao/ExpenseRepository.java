@@ -1,7 +1,6 @@
 package com.soyhenry.expenseapp.dao;
 
 
-import com.soyhenry.expenseapp.dao.dto.ExpenseDto;
 import com.soyhenry.expenseapp.entities.Expense;
 import com.soyhenry.expenseapp.exception.DAOException;
 

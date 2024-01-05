@@ -4,6 +4,7 @@ import com.soyhenry.expenseapp.dto.request.ExpenseCategoryRequestDto;
 import com.soyhenry.expenseapp.dto.request.ExpenseRequestDto;
 import com.soyhenry.expenseapp.dto.response.ExpenseResponseDto;
 import com.soyhenry.expenseapp.exception.DAOException;
+import com.soyhenry.expenseapp.service.ExpenseCategoryService;
 import com.soyhenry.expenseapp.service.ExpenseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +16,13 @@ import java.util.List;
 @RequestMapping("/api/v1/expense")
 public class ExpenseController {
     public final ExpenseService expenseService;
+    public final ExpenseCategoryService expenseCategoryService;
 
-    public ExpenseController(ExpenseService expenseService) {
+    public ExpenseController(ExpenseService expenseService, ExpenseCategoryService expenseCategoryService) {
         this.expenseService = expenseService;
+        this.expenseCategoryService = expenseCategoryService;
     }
 
-    @PostMapping("/category")
-    public ResponseEntity<String> createCategoryHndler(@RequestBody ExpenseCategoryRequestDto expenseCategoryRequestDto){
-        //String response=
-        return null;
-    }
 
     @PostMapping
     public ResponseEntity<String> createExpenseHandler(@RequestBody ExpenseRequestDto expenseRequestDto) throws DAOException {
@@ -57,5 +55,14 @@ public class ExpenseController {
         ExpenseResponseDto expenseResponseDto=expenseService.getExpenseById(id);
         System.out.println("ExpenseController: Obteniendo el gasto con id:"+ id);
         return  ResponseEntity.status(HttpStatus.OK).body(expenseResponseDto);
+    }
+
+
+    @PostMapping("/category")
+    public ResponseEntity<String> createCategoryHandler(@RequestBody ExpenseCategoryRequestDto expenseCategoryRequestDto){
+        String response= expenseCategoryService.createCategory(expenseCategoryRequestDto);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(response);
     }
 }
